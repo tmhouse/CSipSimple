@@ -1,3 +1,10 @@
+I forked this project for use with my old android(JB).
+and maybe, I will update in my own way.
+
+このプロジェクトは私の古いandroid(JB)で使うためにforkしました。
+そしてたぶん、私の勝手でupdateします。
+
+---- original ----
 # CSipSimple
 CSipSimple is an open-source native SIP client for Android
 
