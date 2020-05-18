@@ -42,7 +42,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
     <!--
     Not taken into account?
     Regarding Diane's comment this was never implemented 
@@ -259,7 +258,7 @@
             android:name="com.csipsimple.wizards.WizardChooser"
             android:configChanges="orientation"
             android:label="@string/choose_wizard"
-            android:theme="@style/DarkTheme.Dialog" />
+            android:theme="@style/DarkTheme" />
 
         <!-- Preferences -->
         <activity
@@ -302,7 +301,7 @@
             android:configChanges="orientation"
             android:label="@string/prefs_fast"
             android:permission="android.permission.CONFIGURE_SIP"
-            android:theme="@style/DarkTheme.Dialog" >
+            android:theme="@style/DarkTheme" >
             <intent-filter>
                 <action android:name="com.csipsimple.ui.action.PREFS_FAST" />
 
@@ -318,7 +317,7 @@
             android:name="com.csipsimple.ui.prefs.AudioTester"
             android:label="@string/test_audio"
             android:screenOrientation="portrait"
-            android:theme="@style/DarkTheme.Dialog" />
+            android:theme="@style/DarkTheme" />
 
         <!-- Wizards -->
         <activity
@@ -349,7 +348,7 @@
             android:permission="android.permission.USE_SIP"
             android:process=":sipStack"
             android:taskAffinity=""
-            android:theme="@style/DarkTheme.Dialog" >
+            android:theme="@style/DarkTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.CALL" />
 
@@ -377,7 +376,7 @@
             android:launchMode="singleTask"
             android:permission="android.permission.CALL_PRIVILEGED"
             android:targetActivity="com.csipsimple.ui.outgoingcall.OutgoingCallChooser"
-            android:theme="@style/DarkTheme.Dialog" >
+            android:theme="@style/DarkTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.CALL_PRIVILEGED" />
 
@@ -395,7 +394,7 @@
             android:launchMode="singleTask"
             android:permission="android.permission.CALL_PRIVILEGED"
             android:targetActivity="com.csipsimple.ui.outgoingcall.OutgoingCallChooser"
-            android:theme="@style/DarkTheme.Dialog" >
+            android:theme="@style/DarkTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.CALL_PRIVILEGED" />
 
@@ -450,7 +449,7 @@
             android:configChanges="orientation"
             android:label="@string/prefs_media"
             android:taskAffinity="com.csipsimple.ui.incall.InCallActivity"
-            android:theme="@style/DarkTheme.Dialog" />
+            android:theme="@style/DarkTheme" />
 
         <receiver android:name="com.csipsimple.service.HeadsetButtonReceiver" />
 

@@ -262,7 +262,8 @@ public class TargetDrawable {
         if (mDrawable == null || !mEnabled) {
             return;
         }
-        canvas.save(Canvas.MATRIX_SAVE_FLAG);
+        //canvas.save(Canvas.MATRIX_SAVE_FLAG);
+        canvas.save();
         canvas.scale(mScaleX, mScaleY, mPositionX, mPositionY);
         canvas.translate(mTranslationX + mPositionX, mTranslationY + mPositionY);
         canvas.translate(-0.5f * getWidth(), -0.5f * getHeight());

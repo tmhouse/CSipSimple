@@ -209,7 +209,8 @@ public class PointCloud {
 
     public void draw(Canvas canvas) {
         ArrayList<Point> points = mPointCloud;
-        canvas.save(Canvas.MATRIX_SAVE_FLAG);
+        //canvas.save(Canvas.MATRIX_SAVE_FLAG);
+        canvas.save();
         canvas.scale(mScale, mScale, mCenterX, mCenterY);
         for (int i = 0; i < points.size(); i++) {
             Point point = points.get(i);
@@ -222,7 +223,8 @@ public class PointCloud {
             if (alpha == 0) continue;
 
             if (mDrawable != null) {
-                canvas.save(Canvas.MATRIX_SAVE_FLAG);
+                //canvas.save(Canvas.MATRIX_SAVE_FLAG);
+                canvas.save();
                 final float cx = mDrawable.getIntrinsicWidth() * 0.5f;
                 final float cy = mDrawable.getIntrinsicHeight() * 0.5f;
                 final float s = pointSize / MAX_POINT_SIZE;
