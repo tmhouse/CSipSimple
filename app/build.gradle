@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('W:\\dev\\bitbucket_repo\\Keystore\\tmlab_release_key.keystore')
+            storePassword ''
+            keyAlias = 'tmlab_release_key'
+            keyPassword ''
+        }
+    }
     compileSdkVersion 28
 
     defaultConfig {
@@ -12,9 +20,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            //signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
     }
 }
