@@ -103,6 +103,7 @@
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher_nightly"
         android:label="@string/app_name" >
+        <!-- disabled NightlyUpdater.
         <meta-data
             android:name="app_type"
             android:value="nightly" />
@@ -112,6 +113,7 @@
         <meta-data
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAIL5x8Klvg-Y8nV4j4PNSy2JH6yQZ49yKbrqKJAw" />
+        -->
 
         <!--
         Samsung multiview support

@@ -22,12 +22,14 @@
 package com.csipsimple.service;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.provider.CallLog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationCompat.Builder;
@@ -219,18 +221,51 @@ public class SipNotifications {
 
 	// Announces
 
-	// Register
+
+    /**
+     * create notification channel.
+     * @param ctx
+     * @param channelId
+     * @param channelName
+     * @param description
+     */
+    private static void createNotificationChannel(Context ctx, String channelId, String channelName, String description) {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //CharSequence name = ctx.getString(R.string.channel_name);
+            //String description = ctx.getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = ctx.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
+    // Register
 	public synchronized void notifyRegisteredAccounts(ArrayList<SipProfileState> activeAccountsInfos, boolean showNumbers) {
 		if (!isServiceWrapper) {
 			Log.e(THIS_FILE, "Trying to create a service notification from outside the service");
 			return;
 		}
+
+		// notification channel
+        String channelId = context.getString(R.string.notification_channel_id);
+        String description = context.getString(R.string.notification_description);
+        String channelName = context.getString(R.string.notification_channel_name);
+        createNotificationChannel(context, channelId, channelName, description);
+
+
 		int icon = R.drawable.ic_stat_sipok;
 		CharSequence tickerText = context.getString(R.string.service_ticker_registered_text);
 		long when = System.currentTimeMillis();
 		
 
-        Builder nb = new NotificationCompat.Builder(context);
+        Builder nb = new NotificationCompat.Builder(context, channelId);
         nb.setSmallIcon(icon);
         nb.setTicker(tickerText);
         nb.setWhen(when);
@@ -265,7 +300,6 @@ public class SipNotifications {
 	
 	/**
 	 * Format the remote contact name for the call info
-	 * @param callInfo the callinfo to format
 	 * @return the name to display for the contact
 	 */
 	private String formatRemoteContactString(String remoteContact) {
@@ -287,7 +321,6 @@ public class SipNotifications {
 	/**
 	 * Format the notification title for a call info
 	 * @param title
-	 * @param callInfo
 	 * @return
 	 */
 	private String formatNotificationTitle(int title, long accId) {
