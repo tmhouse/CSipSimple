@@ -12,6 +12,9 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
+        ndk {
+            abiFilters "armeabi-v7a", "x86", "armeabi", "mips"
+        }
         applicationId "com.csipsimple"
         minSdkVersion 14
         targetSdkVersion 30
