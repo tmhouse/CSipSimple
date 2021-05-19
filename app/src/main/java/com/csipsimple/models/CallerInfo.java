@@ -27,7 +27,7 @@ package com.csipsimple.models;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.v4.util.LruCache;
+import androidx.collection.LruCache;
 import android.text.TextUtils;
 
 import com.csipsimple.api.SipUri;

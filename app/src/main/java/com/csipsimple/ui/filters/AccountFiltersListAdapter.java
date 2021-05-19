@@ -23,7 +23,7 @@ package com.csipsimple.ui.filters;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v4.widget.ResourceCursorAdapter;
+import androidx.cursoradapter.widget.ResourceCursorAdapter;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;

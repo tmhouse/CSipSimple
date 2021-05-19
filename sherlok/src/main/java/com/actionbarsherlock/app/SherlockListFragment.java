@@ -1,18 +1,20 @@
 package com.actionbarsherlock.app;
 
 import android.app.Activity;
-import android.support.v4.app.ListFragment;
+import androidx.fragment.app.ListFragment;
+
+import com.actionbarsherlock.ActionBarSherlock;
 import com.actionbarsherlock.internal.view.menu.MenuItemWrapper;
 import com.actionbarsherlock.internal.view.menu.MenuWrapper;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnCreateOptionsMenuListener;
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnOptionsItemSelectedListener;
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnPrepareOptionsMenuListener;
-
-public class SherlockListFragment extends ListFragment implements OnCreateOptionsMenuListener, OnPrepareOptionsMenuListener, OnOptionsItemSelectedListener {
+public class SherlockListFragment extends ListFragment
+        implements ActionBarSherlock.OnCreateOptionsMenuListener,
+        ActionBarSherlock.OnPrepareOptionsMenuListener,
+        ActionBarSherlock.OnOptionsItemSelectedListener
+{
     private SherlockFragmentActivity mActivity;
 
     public SherlockFragmentActivity getSherlockActivity() {
@@ -40,9 +42,13 @@ public class SherlockListFragment extends ListFragment implements OnCreateOption
         onCreateOptionsMenu(new MenuWrapper(menu), mActivity.getSupportMenuInflater());
     }
 
-    @Override
+    //@Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //Nothing to see here.
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return false;
     }
 
     @Override
@@ -50,10 +56,10 @@ public class SherlockListFragment extends ListFragment implements OnCreateOption
         onPrepareOptionsMenu(new MenuWrapper(menu));
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
+    //@Override
+    //public void onPrepareOptionsMenu(Menu menu) {
         //Nothing to see here.
-    }
+    //}
 
     @Override
     public final boolean onOptionsItemSelected(android.view.MenuItem item) {
@@ -63,6 +69,12 @@ public class SherlockListFragment extends ListFragment implements OnCreateOption
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //Nothing to see here.
+        return false;
+    }
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
         return false;
     }
 }

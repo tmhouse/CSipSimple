@@ -23,7 +23,7 @@ package com.csipsimple.ui.messages;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v4.widget.ResourceCursorAdapter;
+import androidx.cursoradapter.widget.ResourceCursorAdapter;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;

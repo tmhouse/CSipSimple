@@ -33,7 +33,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.provider.BaseColumns;
 import android.provider.ContactsContract.Contacts;
-import android.support.v4.widget.ResourceCursorAdapter;
+import androidx.cursoradapter.widget.ResourceCursorAdapter;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;

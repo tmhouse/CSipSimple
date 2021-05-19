@@ -3,7 +3,7 @@ package com.actionbarsherlock.app;
 import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app._ActionBarSherlockTrojanHorse;
+//import androidx.core.app._ActionBarSherlockTrojanHorse;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,8 +18,10 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-/** @see {@link _ActionBarSherlockTrojanHorse} */
-public class SherlockFragmentActivity extends _ActionBarSherlockTrojanHorse implements OnActionModeStartedListener, OnActionModeFinishedListener {
+import androidx.fragment.app.FragmentActivity;
+
+//public class SherlockFragmentActivity extends _ActionBarSherlockTrojanHorse implements OnActionModeStartedListener, OnActionModeFinishedListener {
+public class SherlockFragmentActivity extends FragmentActivity implements OnActionModeStartedListener, OnActionModeFinishedListener {
     private static final boolean DEBUG = false;
     private static final String TAG = "SherlockFragmentActivity";
 
@@ -120,7 +122,8 @@ public class SherlockFragmentActivity extends _ActionBarSherlockTrojanHorse impl
         if (getSherlock().dispatchKeyEvent(event)) {
             return true;
         }
-        return super.dispatchKeyEvent(event);
+        //return super.dispatchKeyEvent(event);
+        return false;
     }
 
 
@@ -128,12 +131,14 @@ public class SherlockFragmentActivity extends _ActionBarSherlockTrojanHorse impl
     // Native menu handling
     ///////////////////////////////////////////////////////////////////////////
 
+    @SuppressLint("LongLogTag")
     public MenuInflater getSupportMenuInflater() {
         if (DEBUG) Log.d(TAG, "[getSupportMenuInflater]");
 
         return getSherlock().getMenuInflater();
     }
 
+    @SuppressLint("LongLogTag")
     public void invalidateOptionsMenu() {
         if (DEBUG) Log.d(TAG, "[invalidateOptionsMenu]");
 
@@ -141,13 +146,14 @@ public class SherlockFragmentActivity extends _ActionBarSherlockTrojanHorse impl
     }
 
     // Safe because redefined inside and dispatch
-    @SuppressLint("NewApi")
+    @SuppressLint({"NewApi", "LongLogTag"})
     public void supportInvalidateOptionsMenu() {
         if (DEBUG) Log.d(TAG, "[supportInvalidateOptionsMenu]");
 
         invalidateOptionsMenu();
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public final boolean onCreatePanelMenu(int featureId, android.view.Menu menu) {
         if (DEBUG) Log.d(TAG, "[onCreatePanelMenu] featureId: " + featureId + ", menu: " + menu);
@@ -168,6 +174,7 @@ public class SherlockFragmentActivity extends _ActionBarSherlockTrojanHorse impl
         return true;
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public final boolean onPreparePanel(int featureId, View view, android.view.Menu menu) {
         if (DEBUG) Log.d(TAG, "[onPreparePanel] featureId: " + featureId + ", view: " + view + ", menu: " + menu);
@@ -188,6 +195,7 @@ public class SherlockFragmentActivity extends _ActionBarSherlockTrojanHorse impl
         return true;
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public final boolean onMenuItemSelected(int featureId, android.view.MenuItem item) {
         if (DEBUG) Log.d(TAG, "[onMenuItemSelected] featureId: " + featureId + ", item: " + item);

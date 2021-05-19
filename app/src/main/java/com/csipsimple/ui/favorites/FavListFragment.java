@@ -23,7 +23,7 @@ package com.csipsimple.ui.favorites;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.content.Loader;
+import androidx.loader.content.Loader;
 import android.view.View;
 import android.widget.ListView;
 

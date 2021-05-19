@@ -27,7 +27,7 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.database.MergeCursor;
 import android.provider.BaseColumns;
-import android.support.v4.content.AsyncTaskLoader;
+import androidx.loader.content.AsyncTaskLoader;
 import android.text.TextUtils;
 
 import com.csipsimple.api.SipProfile;

@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockDialogFragment;
+import com.actionbarsherlock.view.Menu;
 import com.csipsimple.R;
 import com.csipsimple.utils.Log;
 import com.csipsimple.widgets.Dialpad;
@@ -79,6 +80,16 @@ public class DtmfDialogFragment extends SherlockDialogFragment implements OnDial
         dialPad.setOnDialKeyListener(this);
         dialPadTextView = (TextView) v.findViewById(R.id.digitsText);
         return v;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return false;
     }
 
     public interface OnDtmfListener {

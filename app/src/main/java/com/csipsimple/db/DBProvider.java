@@ -33,7 +33,6 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Binder;
 import android.provider.CallLog;
-import android.support.v4.database.DatabaseUtilsCompat;
 import android.text.TextUtils;
 
 import com.csipsimple.api.SipManager;
@@ -52,6 +51,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import androidx.core.database.DatabaseUtilsCompat;
 
 public class DBProvider extends ContentProvider {
 	

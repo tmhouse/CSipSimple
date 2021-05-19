@@ -25,7 +25,7 @@ package com.csipsimple.ui.messages;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Typeface;
-import android.support.v4.widget.SimpleCursorAdapter;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.format.DateUtils;

@@ -2,18 +2,20 @@ package com.actionbarsherlock.app;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
+
+import com.actionbarsherlock.ActionBarSherlock;
 import com.actionbarsherlock.internal.view.menu.MenuItemWrapper;
 import com.actionbarsherlock.internal.view.menu.MenuWrapper;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnCreateOptionsMenuListener;
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnOptionsItemSelectedListener;
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnPrepareOptionsMenuListener;
-
-public class SherlockFragment extends Fragment implements OnCreateOptionsMenuListener, OnPrepareOptionsMenuListener, OnOptionsItemSelectedListener {
+public class SherlockFragment extends Fragment
+        implements ActionBarSherlock.OnCreateOptionsMenuListener,
+        ActionBarSherlock.OnPrepareOptionsMenuListener,
+        ActionBarSherlock.OnOptionsItemSelectedListener
+{
     private SherlockFragmentActivity mActivity;
 
     public SherlockFragmentActivity getSherlockActivity() {
@@ -41,9 +43,12 @@ public class SherlockFragment extends Fragment implements OnCreateOptionsMenuLis
         onCreateOptionsMenu(new MenuWrapper(menu), mActivity.getSupportMenuInflater());
     }
 
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //Nothing to see here.
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return false;
     }
 
     @Override
@@ -52,8 +57,9 @@ public class SherlockFragment extends Fragment implements OnCreateOptionsMenuLis
     }
 
     @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        //Nothing to see here.
+    //public void onPrepareOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return false;
     }
 
     @Override
@@ -76,4 +82,6 @@ public class SherlockFragment extends Fragment implements OnCreateOptionsMenuLis
         outState.putBoolean("FAKE_KEY", true);
         super.onSaveInstanceState(outState);
     }
+
+
 }

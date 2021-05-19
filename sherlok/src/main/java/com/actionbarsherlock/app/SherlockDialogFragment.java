@@ -1,18 +1,24 @@
 package com.actionbarsherlock.app;
 
 import android.app.Activity;
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
+
+import com.actionbarsherlock.ActionBarSherlock;
 import com.actionbarsherlock.internal.view.menu.MenuItemWrapper;
 import com.actionbarsherlock.internal.view.menu.MenuWrapper;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnCreateOptionsMenuListener;
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnOptionsItemSelectedListener;
-import static com.actionbarsherlock.app.SherlockFragmentActivity.OnPrepareOptionsMenuListener;
+//import static com.actionbarsherlock.app.SherlockFragmentActivity.OnCreateOptionsMenuListener;
+//import static com.actionbarsherlock.app.SherlockFragmentActivity.OnOptionsItemSelectedListener;
+//import static com.actionbarsherlock.app.SherlockFragmentActivity.OnPrepareOptionsMenuListener;
 
-public class SherlockDialogFragment extends DialogFragment implements OnCreateOptionsMenuListener, OnPrepareOptionsMenuListener, OnOptionsItemSelectedListener {
+public class SherlockDialogFragment extends DialogFragment
+        implements ActionBarSherlock.OnCreateOptionsMenuListener,
+        ActionBarSherlock.OnPrepareOptionsMenuListener,
+        ActionBarSherlock.OnOptionsItemSelectedListener
+{
     private SherlockFragmentActivity mActivity;
 
     public SherlockFragmentActivity getSherlockActivity() {
@@ -40,9 +46,14 @@ public class SherlockDialogFragment extends DialogFragment implements OnCreateOp
         onCreateOptionsMenu(new MenuWrapper(menu), mActivity.getSupportMenuInflater());
     }
 
-    @Override
+    //@Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //Nothing to see here.
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return false;
     }
 
     @Override
@@ -51,8 +62,9 @@ public class SherlockDialogFragment extends DialogFragment implements OnCreateOp
     }
 
     @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        //Nothing to see here.
+    //public void onPrepareOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return false;
     }
 
     @Override
@@ -65,4 +77,7 @@ public class SherlockDialogFragment extends DialogFragment implements OnCreateOp
         //Nothing to see here.
         return false;
     }
+
+
+
 }

@@ -1,13 +1,11 @@
 apply plugin: 'com.android.library'
 
 android {
-
-    //compileSdkVersion 16
-    compileSdkVersion 26
+    compileSdkVersion 30
 
     defaultConfig {
-        minSdkVersion 4
-        targetSdkVersion 26
+        minSdkVersion 14
+        targetSdkVersion 30
     }
 
     buildTypes {
@@ -19,8 +17,9 @@ android {
     lintOptions {
         abortOnError false
     }
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {
-    api files('libs/android-support-v4.jar')
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
 }
