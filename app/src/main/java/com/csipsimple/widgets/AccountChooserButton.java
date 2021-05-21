@@ -204,12 +204,11 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onClick(View v) {
         Log.d(THIS_FILE, "Click the account chooser button");
-        throw new RuntimeException("not impl yet.");
 
-        /****
         if(mPopupMenu == null) {
             mPopupMenu = new MenuPopupHelper(getContext(), mMenuBuilder, this);
             mPopupMenu.setForceShowIcon(true);
@@ -268,7 +267,6 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         }
 
         mPopupMenu.show();
-         ****/
     }
     
     private class OnPluginLoadListener implements OnLoadListener {
@@ -289,12 +287,9 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
 
         @Override
         public void run() {
-            throw new RuntimeException("not impl yet.");
-            /***
             MenuItem item = mMenuBuilder.add(R.id.menu_accbtn_accounts, Menu.NONE, Menu.NONE,  ch.getLabel().toString());
             item.setIcon(ch.getIconDrawable());
             item.setOnMenuItemClickListener(new OnAccountMenuItemListener(ch.getFakeProfile()));
-             ****/
         }
     }
 
