@@ -23,11 +23,12 @@ package com.csipsimple.ui.account;
 
 import android.os.Bundle;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.csipsimple.R;
 import com.csipsimple.ui.account.AccountsChooserListFragment.OnAccountClickListener;
 
-public abstract class AccountsChooserListActivity extends SherlockFragmentActivity implements OnAccountClickListener {
+import androidx.appcompat.app.AppCompatActivity;
+
+public abstract class AccountsChooserListActivity extends AppCompatActivity implements OnAccountClickListener {
     
     private AccountsChooserListFragment listFragment;
 

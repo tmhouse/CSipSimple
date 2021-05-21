@@ -7,14 +7,14 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
 
 
 /**
  *
  */
-public class PermissionCheckActivity extends FragmentActivity {
+public class PermissionCheckActivity extends AppCompatActivity {
     private static final String[] permissions = {
         Manifest.permission.RECORD_AUDIO,
         Manifest.permission.PROCESS_OUTGOING_CALLS,

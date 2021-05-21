@@ -18,6 +18,7 @@ package com.actionbarsherlock.internal.view.menu;
 
 import static com.actionbarsherlock.internal.ResourcesCompat.getResources_getInteger;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -48,6 +49,7 @@ import java.util.Set;
 /**
  * MenuPresenter for building action menus as seen in the action bar and action modes.
  */
+@SuppressLint("RestrictedApi")
 public class ActionMenuPresenter extends BaseMenuPresenter
         implements ActionProvider.SubUiVisibilityListener {
     //UNUSED private static final String TAG = "ActionMenuPresenter";

@@ -28,12 +28,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 
-import com.actionbarsherlock.app.SherlockActivity;
 import com.csipsimple.R;
 import com.csipsimple.api.SipConfigManager;
 import com.csipsimple.utils.PreferencesWrapper;
 
-public class PrefsFast extends SherlockActivity implements OnClickListener {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PrefsFast extends AppCompatActivity implements OnClickListener {
 	
 	private CheckBox globIntegrate;
 	private RadioButton globProfileAlways;

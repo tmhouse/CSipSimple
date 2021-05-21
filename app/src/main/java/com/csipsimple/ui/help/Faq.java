@@ -32,11 +32,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
-import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.csipsimple.R;
 import com.csipsimple.utils.CustomDistribution;
 
-public class Faq extends SherlockDialogFragment {
+import androidx.appcompat.app.AppCompatDialogFragment;
+
+public class Faq extends AppCompatDialogFragment {
 	private final static String FAQ_URL = CustomDistribution.getFaqLink();
 
 	public static Faq newInstance() {

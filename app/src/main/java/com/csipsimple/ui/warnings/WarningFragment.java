@@ -28,7 +28,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.csipsimple.R;
 import com.csipsimple.ui.warnings.WarningUtils.OnWarningChanged;
 import com.csipsimple.ui.warnings.WarningUtils.WarningBlockView;
@@ -37,8 +36,10 @@ import com.csipsimple.utils.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
 
-public class WarningFragment extends SherlockFragment implements OnWarningChanged {
+
+public class WarningFragment extends Fragment implements OnWarningChanged {
 
     private static final String THIS_FILE = "WarningFragment";
     private List<String> warnList = new ArrayList<String>();

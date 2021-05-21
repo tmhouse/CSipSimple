@@ -23,13 +23,14 @@
 package com.csipsimple.ui.messages;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
 import com.csipsimple.ui.messages.MessageFragment.OnQuitListener;
 import com.csipsimple.utils.Compatibility;
 
-public class MessageActivity extends SherlockFragmentActivity implements OnQuitListener {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MessageActivity extends AppCompatActivity implements OnQuitListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

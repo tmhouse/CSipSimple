@@ -24,9 +24,8 @@ package com.csipsimple.widgets.contactbadge;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-public class OverlayedImageView extends ImageView {
+public class OverlayedImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     private QuickContactBadge topBadge;
 

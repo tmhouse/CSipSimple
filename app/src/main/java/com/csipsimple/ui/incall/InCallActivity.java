@@ -53,7 +53,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.csipsimple.R;
 import com.csipsimple.api.ISipService;
 import com.csipsimple.api.MediaState;
@@ -82,7 +81,9 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class InCallActivity extends SherlockFragmentActivity implements IOnCallActionTrigger, 
+import androidx.appcompat.app.AppCompatActivity;
+
+public class InCallActivity extends AppCompatActivity implements IOnCallActionTrigger,
         IOnLeftRightChoice, ProximityDirector, OnDtmfListener {
     private static final int QUIT_DELAY = 3000;
     private final static String THIS_FILE = "InCallActivity";

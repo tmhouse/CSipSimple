@@ -43,7 +43,6 @@ import android.widget.SimpleAdapter;
 import android.widget.SimpleAdapter.ViewBinder;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockListFragment;
 import com.csipsimple.R;
 import com.csipsimple.api.SipConfigManager;
 import com.csipsimple.utils.Log;
@@ -58,7 +57,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CodecsFragment extends SherlockListFragment implements OnCheckedChangeListener {
+import androidx.fragment.app.ListFragment;
+
+public class CodecsFragment extends ListFragment implements OnCheckedChangeListener {
 
     protected static final String THIS_FILE = "CodecsFragment";
 

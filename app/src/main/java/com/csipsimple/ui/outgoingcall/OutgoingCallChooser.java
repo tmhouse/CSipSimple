@@ -32,7 +32,6 @@ import android.os.IBinder;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.csipsimple.R;
 import com.csipsimple.api.ISipService;
 import com.csipsimple.api.SipManager;
@@ -42,7 +41,9 @@ import com.csipsimple.utils.Log;
 import com.csipsimple.utils.PreferencesProviderWrapper;
 import com.csipsimple.utils.UriUtils;
 
-public class OutgoingCallChooser extends SherlockFragmentActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class OutgoingCallChooser extends AppCompatActivity {
 
 
     private static final String THIS_FILE = "OutgoingCallChooser";

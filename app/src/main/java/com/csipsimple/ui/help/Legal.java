@@ -30,10 +30,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.csipsimple.R;
 
-public class Legal extends SherlockDialogFragment {
+import androidx.appcompat.app.AppCompatDialogFragment;
+
+public class Legal extends AppCompatDialogFragment {
 
 	
 	public static Legal newInstance() {

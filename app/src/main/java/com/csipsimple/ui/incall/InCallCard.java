@@ -21,6 +21,7 @@
 
 package com.csipsimple.ui.incall;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -29,6 +30,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.FloatMath;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -41,13 +44,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+//import com.actionbarsherlock.internal.utils.UtilityWrapper;
+//import com.actionbarsherlock.internal.view.menu.ActionMenuPresenter;
+//import com.actionbarsherlock.internal.view.menu.ActionMenuView;
+//import com.actionbarsherlock.internal.view.menu.MenuBuilder;
+//import com.actionbarsherlock.internal.view.menu.MenuBuilder.Callback;
+//import com.actionbarsherlock.view.MenuInflater;
+//import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.actionbarsherlock.internal.view.menu.ActionMenuPresenter;
-import com.actionbarsherlock.internal.view.menu.ActionMenuView;
-import com.actionbarsherlock.internal.view.menu.MenuBuilder;
-import com.actionbarsherlock.internal.view.menu.MenuBuilder.Callback;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.csipsimple.R;
 import com.csipsimple.api.SipCallSession;
 import com.csipsimple.api.SipCallSession.MediaState;
@@ -71,7 +76,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class InCallCard extends FrameLayout implements OnClickListener, Callback {
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.widget.ActionMenuView;
+
+@SuppressLint("RestrictedApi")
+public class InCallCard extends FrameLayout implements OnClickListener, androidx.appcompat.view.menu.MenuBuilder.Callback {
 
     private static final String THIS_FILE = "InCallCard";
     
@@ -113,6 +122,7 @@ public class InCallCard extends FrameLayout implements OnClickListener, Callback
         incallPlugins = ExtraPlugins.getDynActivityPlugins(context, SipManager.ACTION_INCALL_PLUGIN);
     }
 
+    @SuppressLint("RestrictedApi")
     private void initControllerView() {
         photo = (ImageView) findViewById(R.id.contact_photo);
         remoteName = (TextView) findViewById(R.id.contact_name_display_name);
@@ -135,8 +145,9 @@ public class InCallCard extends FrameLayout implements OnClickListener, Callback
         
         mActionMenuPresenter = new ActionMenuPresenter(getContext());
         mActionMenuPresenter.setReserveOverflow(true);
-        
-        btnMenuBuilder.addMenuPresenter(mActionMenuPresenter);
+
+        Log.e("", "ignore btnMenuBuilder.addMenuPresenter");
+        //btnMenuBuilder.addMenuPresenter(mActionMenuPresenter);
         
         updateMenuView();
     }

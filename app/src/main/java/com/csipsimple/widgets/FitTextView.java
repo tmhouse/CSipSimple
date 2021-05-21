@@ -25,9 +25,8 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.widget.TextView;
 
-public class FitTextView extends TextView {
+public class FitTextView extends androidx.appcompat.widget.AppCompatTextView {
 
     public FitTextView(Context context) {
         super(context);

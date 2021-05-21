@@ -51,7 +51,9 @@ import com.csipsimple.utils.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PresenceStatusSpinner extends Spinner implements android.widget.AdapterView.OnItemSelectedListener {
+import androidx.appcompat.widget.AppCompatSpinner;
+
+public class PresenceStatusSpinner extends AppCompatSpinner implements android.widget.AdapterView.OnItemSelectedListener {
 
     private static final String THIS_FILE = "PresenceStatusSpinner";
 

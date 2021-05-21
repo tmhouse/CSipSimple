@@ -39,7 +39,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.csipsimple.R;
 import com.csipsimple.api.SipConfigManager;
 import com.csipsimple.api.SipManager;
@@ -53,7 +52,10 @@ import com.csipsimple.utils.PreferencesProviderWrapper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Help extends SherlockDialogFragment implements OnItemClickListener {
+import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.DialogFragment;
+
+public class Help extends AppCompatDialogFragment implements OnItemClickListener {
 	
 	
 	private static final String THIS_FILE = "Help";
@@ -189,7 +191,7 @@ public class Help extends SherlockDialogFragment implements OnItemClickListener 
 		HelpArrayAdapter haa = (HelpArrayAdapter) av.getAdapter();
 		HelpEntry he = haa.getItem(position);
 		
-		SherlockDialogFragment newFragment;
+		DialogFragment newFragment;
 		switch (he.choiceTag) {
 		case FAQ:
 			newFragment = Faq.newInstance();

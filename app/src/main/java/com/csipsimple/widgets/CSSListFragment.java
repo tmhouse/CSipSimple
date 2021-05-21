@@ -23,12 +23,13 @@ package com.csipsimple.widgets;
 
 import android.database.Cursor;
 import android.os.Bundle;
+
+import androidx.fragment.app.ListFragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
-import com.actionbarsherlock.app.SherlockListFragment;
 import com.csipsimple.R;
 
 /**
@@ -42,7 +43,7 @@ import com.csipsimple.R;
  * @author r3gis3r
  *
  */
-public abstract class CSSListFragment extends SherlockListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public abstract class CSSListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     // Override set list shown
     

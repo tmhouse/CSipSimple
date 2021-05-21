@@ -22,6 +22,7 @@
 package com.csipsimple.ui.filters;
 
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -38,6 +39,9 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -46,9 +50,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.csipsimple.R;
 import com.csipsimple.api.SipManager;
 import com.csipsimple.api.SipProfile;
@@ -171,6 +172,7 @@ public class AccountFiltersListFragment extends CSSListFragment {
         lv.setGrabberId(R.id.grabber);
         // Setup the drop listener
         lv.setOnDropListener(new DropListener() {
+            @SuppressLint("LongLogTag")
             @Override
             public void drop(int from, int to) {
                 Log.d(THIS_FILE, "Drop from " + from + " to " + to);
@@ -243,6 +245,7 @@ public class AccountFiltersListFragment extends CSSListFragment {
     
 
     
+    @SuppressLint("LongLogTag")
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
     	
@@ -328,6 +331,7 @@ public class AccountFiltersListFragment extends CSSListFragment {
      * @param cmi The context menu info to retrieve infos from
      * @return corresponding filter id if everything goes well, -1 if not able to retrieve filter
      */
+    @SuppressLint("LongLogTag")
     private long filterIdFromContextMenuInfo(ContextMenuInfo cmi) {
         AdapterView.AdapterContextMenuInfo info;
         try {

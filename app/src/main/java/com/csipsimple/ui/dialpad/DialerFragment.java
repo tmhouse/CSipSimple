@@ -67,11 +67,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-//import com.actionbarsherlock.app.SherlockFragment;
-//import com.actionbarsherlock.view.Menu;
-//import com.actionbarsherlock.view.MenuInflater;
-//import com.actionbarsherlock.view.MenuItem;
-//import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.csipsimple.R;
 import com.csipsimple.api.ISipService;
 import com.csipsimple.api.SipCallSession;

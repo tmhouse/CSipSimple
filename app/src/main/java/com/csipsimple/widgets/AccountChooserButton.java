@@ -41,10 +41,6 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.internal.view.View_HasStateListenerSupport;
 import com.actionbarsherlock.internal.view.View_OnAttachStateChangeListener;
-//import com.actionbarsherlock.internal.view.menu.MenuBuilder;
-//import com.actionbarsherlock.internal.view.menu.MenuPopupHelper;
-//import com.actionbarsherlock.view.MenuItem;
-//import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.csipsimple.R;
 import com.csipsimple.api.SipProfile;
 import com.csipsimple.utils.AccountListUtils;

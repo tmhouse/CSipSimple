@@ -54,16 +54,6 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-//import com.actionbarsherlock.app.ActionBar;
-//import com.actionbarsherlock.app.ActionBar.Tab;
-//import com.actionbarsherlock.app.SherlockFragmentActivity;
-//import com.actionbarsherlock.internal.nineoldandroids.animation.ObjectAnimator;
-//import com.actionbarsherlock.internal.nineoldandroids.animation.ValueAnimator;
-//import com.actionbarsherlock.internal.utils.UtilityWrapper;
-//import com.actionbarsherlock.view.Menu;
-//import com.actionbarsherlock.view.MenuItem;
-//import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.internal.nineoldandroids.animation.ValueAnimator;
 import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.csipsimple.R;
 import com.csipsimple.api.SipConfigManager;
@@ -97,7 +87,6 @@ import java.util.List;
 import static android.animation.ValueAnimator.INFINITE;
 import static android.animation.ValueAnimator.REVERSE;
 
-//public class SipHome extends SherlockFragmentActivity implements OnWarningChanged {
 public class SipHome extends AppCompatActivity implements OnWarningChanged {
     public static final int ACCOUNTS_MENU = Menu.FIRST + 1;
     public static final int PARAMS_MENU = Menu.FIRST + 2;

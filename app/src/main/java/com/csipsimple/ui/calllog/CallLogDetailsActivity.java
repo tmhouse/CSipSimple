@@ -22,13 +22,14 @@
 package com.csipsimple.ui.calllog;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
 import com.csipsimple.ui.calllog.CallLogDetailsFragment.OnQuitListener;
 import com.csipsimple.utils.Compatibility;
 
-public class CallLogDetailsActivity extends SherlockFragmentActivity implements OnQuitListener {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CallLogDetailsActivity extends AppCompatActivity implements OnQuitListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -29,17 +29,18 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.csipsimple.R;
 
 import java.lang.reflect.Method;
 
+import androidx.appcompat.widget.AppCompatEditText;
+
 /**
  * EditText which suppresses IME show up.
  */
-public class DigitsEditText extends EditText {
+public class DigitsEditText extends AppCompatEditText {
 
     //private static final String THIS_FILE = "DigitsEditText";
     private Boolean isDigit = null;

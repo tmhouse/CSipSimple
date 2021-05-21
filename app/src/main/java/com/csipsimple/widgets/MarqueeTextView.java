@@ -24,9 +24,8 @@ package com.csipsimple.widgets;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
-public class MarqueeTextView extends TextView {
+public class MarqueeTextView extends androidx.appcompat.widget.AppCompatTextView {
 
 	public MarqueeTextView(Context context, AttributeSet attrs) {
 		super(context, attrs);
