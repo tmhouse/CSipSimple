@@ -56,7 +56,7 @@ public class ActionBarContainer extends NineFrameLayout {
 
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.SherlockActionBar);
-        mBackground = a.getDrawable(R.styleable.SherlockActionBar_background);
+        mBackground = a.getDrawable(R.styleable.SherlockActionBar__background);
         mStackedBackground = a.getDrawable(
                 R.styleable.SherlockActionBar_backgroundStacked);
 

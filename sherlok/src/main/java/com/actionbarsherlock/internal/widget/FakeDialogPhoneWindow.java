@@ -18,8 +18,8 @@ public class FakeDialogPhoneWindow extends LinearLayout {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SherlockTheme);
 
-        a.getValue(R.styleable.SherlockTheme_windowMinWidthMajor, mMinWidthMajor);
-        a.getValue(R.styleable.SherlockTheme_windowMinWidthMinor, mMinWidthMinor);
+        a.getValue(R.styleable.SherlockTheme__windowMinWidthMajor, mMinWidthMajor);
+        a.getValue(R.styleable.SherlockTheme__windowMinWidthMinor, mMinWidthMinor);
 
         a.recycle();
     }

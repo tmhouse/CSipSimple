@@ -3,7 +3,7 @@
 <resources>
     <attr name="titleTextStyle" format="reference" />
     <attr name="subtitleTextStyle" format="reference" />
-    <attr name="background" format="reference|color" />
+    <attr name="_background" format="reference|color" />
     <attr name="backgroundSplit" format="reference|color" />
     <attr name="height" format="dimension" />
     <attr name="divider" format="reference" />
@@ -35,7 +35,7 @@
         <attr name="actionBarWidgetTheme" format="reference" />
         <!-- Size of the Action Bar, including the contextual
              bar used to present Action Modes. -->
-        <attr name="actionBarSize" format="dimension" >
+        <attr name="_actionBarSize" format="dimension" >
             <enum name="wrap_content" value="0" />
         </attr>
         <!-- Custom divider drawable to use for elements in the action bar. -->
@@ -114,8 +114,8 @@
         <attr name="textAppearanceListItemSmall" format="reference" />
 
 
-        <attr name="windowMinWidthMajor" format="dimension" />
-        <attr name="windowMinWidthMinor" format="dimension" />
+        <attr name="_windowMinWidthMajor" format="dimension" />
+        <attr name="_windowMinWidthMinor" format="dimension" />
 
 
 
@@ -154,7 +154,7 @@
     <!-- Attributes used to style the Action Bar. -->
     <declare-styleable name="SherlockActionBar">
         <!-- The type of navigation to use. -->
-        <attr name="navigationMode">
+        <attr name="_navigationMode">
             <!-- Normal static title text -->
             <enum name="normal" value="0" />
             <!-- The action bar will use a selection list for navigation. -->
@@ -163,7 +163,7 @@
             <enum name="tabMode" value="2" />
         </attr>
         <!-- Options affecting how the action bar is displayed. -->
-        <attr name="displayOptions">
+        <attr name="_displayOptions">
             <flag name="useLogo" value="0x1" />
             <flag name="showHome" value="0x2" />
             <flag name="homeAsUp" value="0x4" />
@@ -186,7 +186,7 @@
         <!-- Specifies the drawable used for item dividers. -->
         <attr name="divider" />
         <!-- Specifies a background drawable for the action bar. -->
-        <attr name="background" />
+        <attr name="_background" />
         <!-- Specifies a background drawable for a second stacked row of the action bar. -->
         <attr name="backgroundStacked" format="reference|color" />
         <!-- Specifies a background drawable for the bottom component of a split action bar. -->
@@ -215,7 +215,7 @@
         <!-- Specifies a style to use for subtitle text. -->
         <attr name="subtitleTextStyle" />
         <!-- Specifies a background for the action mode bar. -->
-        <attr name="background" />
+        <attr name="_background" />
         <!-- Specifies a background for the split action mode bar. -->
         <attr name="backgroundSplit" />
         <!-- Specifies a fixed height for the action mode bar. -->

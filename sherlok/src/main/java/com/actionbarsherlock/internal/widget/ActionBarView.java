@@ -177,7 +177,7 @@ public class ActionBarView extends AbsActionBarView {
 
         ApplicationInfo appInfo = context.getApplicationInfo();
         PackageManager pm = context.getPackageManager();
-        mNavigationMode = a.getInt(R.styleable.SherlockActionBar_navigationMode,
+        mNavigationMode = a.getInt(R.styleable.SherlockActionBar__navigationMode,
                 ActionBar.NAVIGATION_MODE_STANDARD);
         mTitle = a.getText(R.styleable.SherlockActionBar_title);
         mSubtitle = a.getText(R.styleable.SherlockActionBar_subtitle);
@@ -224,7 +224,7 @@ public class ActionBarView extends AbsActionBarView {
         mProgressBarPadding = a.getDimensionPixelOffset(R.styleable.SherlockActionBar_progressBarPadding, 0);
         mItemPadding = a.getDimensionPixelOffset(R.styleable.SherlockActionBar_itemPadding, 0);
 
-        setDisplayOptions(a.getInt(R.styleable.SherlockActionBar_displayOptions, DISPLAY_DEFAULT));
+        setDisplayOptions(a.getInt(R.styleable.SherlockActionBar__displayOptions, DISPLAY_DEFAULT));
 
         final int customNavId = a.getResourceId(R.styleable.SherlockActionBar_customNavigationLayout, 0);
         if (customNavId != 0) {
@@ -1232,6 +1232,7 @@ public class ActionBarView extends AbsActionBarView {
 
         @Override
         public void onPopulateAccessibilityEvent(AccessibilityEvent event) {
+            super.onPopulateAccessibilityEvent(event);
             supportOnPopulateAccessibilityEvent(event);
         }
 
@@ -1246,6 +1247,7 @@ public class ActionBarView extends AbsActionBarView {
 
         @Override
         protected void onFinishInflate() {
+            super.onFinishInflate();
             mUpView = findViewById(R.id.abs__up);
             mIconView = (ImageView) findViewById(R.id.abs__home);
         }

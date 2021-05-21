@@ -79,7 +79,7 @@ public class ActionBarContextView extends AbsActionBarView implements AnimatorLi
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SherlockActionMode, defStyle, 0);
         setBackgroundDrawable(a.getDrawable(
-                R.styleable.SherlockActionMode_background));
+                R.styleable.SherlockActionMode__background));
         mTitleStyleRes = a.getResourceId(
                 R.styleable.SherlockActionMode_titleTextStyle, 0);
         mSubtitleStyleRes = a.getResourceId(
