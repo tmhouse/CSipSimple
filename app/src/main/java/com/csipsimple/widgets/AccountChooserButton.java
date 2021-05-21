@@ -21,6 +21,7 @@
 
 package com.csipsimple.widgets;
 
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.database.ContentObserver;
@@ -31,6 +32,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -39,10 +41,10 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.internal.view.View_HasStateListenerSupport;
 import com.actionbarsherlock.internal.view.View_OnAttachStateChangeListener;
-import com.actionbarsherlock.internal.view.menu.MenuBuilder;
-import com.actionbarsherlock.internal.view.menu.MenuPopupHelper;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
+//import com.actionbarsherlock.internal.view.menu.MenuBuilder;
+//import com.actionbarsherlock.internal.view.menu.MenuPopupHelper;
+//import com.actionbarsherlock.view.MenuItem;
+//import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.csipsimple.R;
 import com.csipsimple.api.SipProfile;
 import com.csipsimple.utils.AccountListUtils;
@@ -56,6 +58,9 @@ import com.csipsimple.wizards.WizardUtils;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuPopupHelper;
 
 public class AccountChooserButton extends LinearLayout implements OnClickListener, View_HasStateListenerSupport {
 
@@ -91,8 +96,6 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         /**
          * Called when the user make an action
          * 
-         * @param keyCode keyCode pressed
-         * @param dialTone corresponding dialtone
          */
         void onChooseAccount(SipProfile account);
     }
@@ -101,6 +104,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         this(context, null);
     }
     
+    @SuppressLint("RestrictedApi")
     public AccountChooserButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         telCmp = new ComponentName(getContext(), com.csipsimple.plugins.telephony.CallHandler.class);
@@ -119,6 +123,8 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         textView = (TextView) findViewById(R.id.quickaction_text);
         imageView = (ImageView) findViewById(R.id.quickaction_icon);
 
+        // just ignore.
+        // MenuBuilder can only be called from within the same library group prefix
         mMenuBuilder = new MenuBuilder(getContext());
         
         // Init accounts
@@ -205,9 +211,11 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     @Override
     public void onClick(View v) {
         Log.d(THIS_FILE, "Click the account chooser button");
+        throw new RuntimeException("not impl yet.");
 
+        /****
         if(mPopupMenu == null) {
-            mPopupMenu = new MenuPopupHelper(getContext(), mMenuBuilder, this, false);
+            mPopupMenu = new MenuPopupHelper(getContext(), mMenuBuilder, this);
             mPopupMenu.setForceShowIcon(true);
         }
         mMenuBuilder.removeGroup(R.id.menu_accbtn_accounts);
@@ -264,6 +272,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         }
 
         mPopupMenu.show();
+         ****/
     }
     
     private class OnPluginLoadListener implements OnLoadListener {
@@ -284,9 +293,12 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
 
         @Override
         public void run() {
+            throw new RuntimeException("not impl yet.");
+            /***
             MenuItem item = mMenuBuilder.add(R.id.menu_accbtn_accounts, Menu.NONE, Menu.NONE,  ch.getLabel().toString());
             item.setIcon(ch.getIconDrawable());
             item.setOnMenuItemClickListener(new OnAccountMenuItemListener(ch.getFakeProfile()));
+             ****/
         }
     }
 
@@ -453,7 +465,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     }
     
     
-    private class OnAccountMenuItemListener implements OnMenuItemClickListener {
+    private class OnAccountMenuItemListener implements MenuItem.OnMenuItemClickListener {
         private SipProfile mAccount;
         OnAccountMenuItemListener(SipProfile account){
             mAccount = account;
@@ -468,6 +480,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         }
     }
     
+    @SuppressLint("RestrictedApi")
     public MenuItem addExtraMenuItem(int titleRes) {
         return mMenuBuilder.add(R.id.menu_accbtn_extras, MenuBuilder.NONE, 100, titleRes);
     }

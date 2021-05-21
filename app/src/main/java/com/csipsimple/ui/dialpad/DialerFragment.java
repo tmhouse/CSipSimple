@@ -21,6 +21,7 @@
 
 package com.csipsimple.ui.dialpad;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent.CanceledException;
@@ -35,6 +36,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.telephony.PhoneNumberUtils;
@@ -46,6 +49,9 @@ import android.text.TextWatcher;
 import android.text.method.DialerKeyListener;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -61,11 +67,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
+//import com.actionbarsherlock.app.SherlockFragment;
+//import com.actionbarsherlock.view.Menu;
+//import com.actionbarsherlock.view.MenuInflater;
+//import com.actionbarsherlock.view.MenuItem;
+//import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.csipsimple.R;
 import com.csipsimple.api.ISipService;
 import com.csipsimple.api.SipCallSession;
@@ -90,7 +96,7 @@ import com.csipsimple.widgets.DialerCallBar.OnDialActionListener;
 import com.csipsimple.widgets.Dialpad;
 import com.csipsimple.widgets.Dialpad.OnDialKeyListener;
 
-public class DialerFragment extends SherlockFragment implements OnClickListener, OnLongClickListener,
+public class DialerFragment extends Fragment implements OnClickListener, OnLongClickListener,
         OnDialKeyListener, TextWatcher, OnDialActionListener, ViewPagerVisibilityListener, OnKeyListener,
         OnAutoCompleteListVisibilityChangedListener {
 
@@ -108,7 +114,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
     private AccountChooserButton accountChooserButton;
     private Boolean isDigit = null;
     /* , isTablet */
-    
+
     private DialingFeedback dialFeedback;
 
     /*
@@ -180,7 +186,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         if(isDigit == null) {
             isDigit = !prefsWrapper.getPreferenceBooleanValue(SipConfigManager.START_WITH_TEXT_DIALER);
         }
-        
+
         setHasOptionsMenu(true);
     }
 
@@ -202,12 +208,12 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         callBar = (DialerCallBar) v.findViewById(R.id.dialerCallBar);
         autoCompleteList = (ListView) v.findViewById(R.id.autoCompleteList);
         rewriteTextInfo = (TextView) v.findViewById(R.id.rewriteTextInfo);
-        
+
         accountChooserButton = (AccountChooserButton) v.findViewById(R.id.accountChooserButton);
-        
+
         accountChooserFilterItem = accountChooserButton.addExtraMenuItem(R.string.apply_rewrite);
         accountChooserFilterItem.setCheckable(true);
-        accountChooserFilterItem.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+        accountChooserFilterItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 setRewritingFeature(!accountChooserFilterItem.isChecked());
@@ -215,7 +221,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
             }
         });
         setRewritingFeature(prefsWrapper.getPreferenceBooleanValue(SipConfigManager.REWRITE_RULES_DIALER));
-        
+
         dialerLayout = (DialerLayout) v.findViewById(R.id.top_digit_dialer);
         //switchTextView = (ImageButton) v.findViewById(R.id.switchTextView);
 
@@ -225,9 +231,9 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         if(savedInstanceState != null) {
             isDigit = savedInstanceState.getBoolean(TEXT_MODE_KEY, isDigit);
         }
-        
+
         digits.setOnEditorActionListener(keyboardActionListener);
-        
+
         // Layout 
         dialerLayout.setForceNoList(mDualPane);
         dialerLayout.setAutoCompleteListVisibiltyChangedListener(this);
@@ -265,7 +271,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         applyTextToAutoComplete();
         return v;
     }
-    
+
     @Override
     public void onResume() {
         super.onResume();
@@ -278,7 +284,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         Theme t = Theme.getCurrentTheme(getActivity());
         if (t != null) {
             dialPad.applyTheme(t);
-            
+
             View subV;
             // Delete button
             subV = v.findViewById(R.id.deleteButton);
@@ -287,7 +293,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
                 t.applyLayoutMargin(subV, "btn_dial_delete_margin");
                 t.applyImageDrawable((ImageView) subV, "ic_dial_action_delete");
             }
-            
+
             // Dial button
             subV = v.findViewById(R.id.dialButton);
             if(subV != null) {
@@ -295,14 +301,14 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
                 t.applyLayoutMargin(subV, "btn_dial_action_margin");
                 t.applyImageDrawable((ImageView) subV, "ic_dial_action_call");
             }
-            
+
             // Additional button
             subV = v.findViewById(R.id.dialVideoButton);
             if(subV != null) {
                 t.applyBackgroundDrawable(subV, "btn_add_action");
                 t.applyLayoutMargin(subV, "btn_dial_add_margin");
             }
-            
+
             // Action dividers
             subV = v.findViewById(R.id.divider1);
             if(subV != null) {
@@ -314,38 +320,38 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
                 t.applyBackgroundDrawable(subV, "btn_bar_divider");
                 t.applyLayoutSize(subV, "btn_dial_divider");
             }
-            
+
             // Dialpad background
             subV = v.findViewById(R.id.dialPad);
             if(subV != null) {
                 t.applyBackgroundDrawable(subV, "dialpad_background");
             }
-            
+
             // Callbar background
             subV = v.findViewById(R.id.dialerCallBar);
             if(subV != null) {
                 t.applyBackgroundDrawable(subV, "dialer_callbar_background");
             }
-            
+
             // Top field background
             subV = v.findViewById(R.id.topField);
             if(subV != null) {
                 t.applyBackgroundDrawable(subV, "dialer_textfield_background");
             }
-            
+
             subV = v.findViewById(R.id.digitsText);
             if(subV != null) {
                 t.applyTextColor((TextView) subV, "textColorPrimary");
             }
-            
+
         }
-        
+
         // Fix dialer background
         if(callBar != null) {
             Theme.fixRepeatableBackground(callBar);
         }
     }
-    
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -363,7 +369,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         }
 
         dialFeedback.resume();
-        
+
     }
 
     @Override
@@ -377,15 +383,15 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         dialFeedback.pause();
         super.onDetach();
     }
-    
-    
+
+
     private final static String TEXT_MODE_KEY = "text_mode";
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putBoolean(TEXT_MODE_KEY, isDigit);
         super.onSaveInstanceState(outState);
     }
-    
+
     private OnEditorActionListener keyboardActionListener = new OnEditorActionListener() {
         @Override
         public boolean onEditorAction(TextView tv, int action, KeyEvent arg2) {
@@ -396,7 +402,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
             return false;
         }
     };
-    
+
     OnAccountChangeListener accountButtonChangeListener = new OnAccountChangeListener() {
         @Override
         public void onChooseAccount(SipProfile account) {
@@ -408,7 +414,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
             applyRewritingInfo();
         }
     };
-    
+
     private void attachButtonListener(View v, int id, boolean longAttach) {
         ImageButton button = (ImageButton) v.findViewById(id);
         if(button == null) {
@@ -439,8 +445,8 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         afterTextChanged(digits.getText());
     }
 
-    
-    
+
+
     private void keyPressed(int keyCode) {
         KeyEvent event = new KeyEvent(KeyEvent.ACTION_DOWN, keyCode);
         digits.onKeyDown(keyCode, event);
@@ -452,7 +458,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         /**
          * Instanciate with a ContactsSearchAdapter adapter to search in when a
          * contact entry is clicked
-         * 
+         *
          * @param adapter the adapter to use
          */
         public OnAutoCompleteListItemClicked(ContactsSearchAdapter adapter) {
@@ -513,7 +519,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         }
         applyTextToAutoComplete();
     }
-    
+
     private void applyTextToAutoComplete() {
 
         // If single pane for smartphone use autocomplete list
@@ -532,18 +538,18 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
 
     /**
      * Set the mode of the text/digit input.
-     * 
+     *
      * @param textMode True if text mode. False if digit mode
      */
     public void setTextDialing(boolean textMode) {
         Log.d(THIS_FILE, "Switch to mode " + textMode);
         setTextDialing(textMode, false);
     }
-    
+
 
     /**
      * Set the mode of the text/digit input.
-     * 
+     *
      * @param textMode True if text mode. False if digit mode
      */
     public void setTextDialing(boolean textMode, boolean forceRefresh) {
@@ -565,7 +571,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         }
         digits.setCursorVisible(!isDigit);
         digits.setIsDigit(isDigit, true);
-        
+
         // Update views visibility
         dialPad.setVisibility(isDigit ? View.VISIBLE : View.GONE);
         autoCompleteList.setVisibility(hasAutocompleteList() ? View.VISIBLE : View.GONE);
@@ -573,9 +579,9 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         //        : R.drawable.ic_menu_switch_digit);
 
         // Invalidate to ask to require the text button to a digit button
-        getSherlockActivity().supportInvalidateOptionsMenu();
+        getActivity().supportInvalidateOptionsMenu();
     }
-    
+
     private boolean hasAutocompleteList() {
         if(!isDigit) {
             return true;
@@ -585,7 +591,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
 
     /**
      * Set the value of the text field and put caret at the end
-     * 
+     *
      * @param value the new text to see in the text field
      */
     public void setTextFieldValue(CharSequence value) {
@@ -629,7 +635,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         delMenu.setIcon(
                 isDigit ? R.drawable.ic_menu_switch_txt
                         : R.drawable.ic_menu_switch_digit).setShowAsAction( action );
-        delMenu.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+        delMenu.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 setTextDialing(isDigit);
@@ -649,7 +655,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         b.putBoolean(SipCallSession.OPT_CALL_VIDEO, true);
         placeCallWithOption(b );
     }
-    
+
     private void placeCallWithOption(Bundle b) {
         if (service == null) {
             return;
@@ -672,7 +678,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
         if(accountChooserFilterItem != null && accountChooserFilterItem.isChecked()) {
             toCall = rewriteNumber(toCall);
         }
-        
+
         if (TextUtils.isEmpty(toCall)) {
             return;
         }
@@ -699,7 +705,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
             });
         }
     }
-    
+
     public void placeVMCall() {
         Long accountToUse = SipProfile.INVALID_ID;
         SipProfile acc = null;
@@ -708,7 +714,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
             // Maybe we could inform user nothing will happen here?
             return;
         }
-        
+
         accountToUse = acc.id;
 
         if (accountToUse >= 0) {
@@ -777,6 +783,7 @@ public class DialerFragment extends SherlockFragment implements OnClickListener,
             // Case gsm voice mail
             TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(
                     Context.TELEPHONY_SERVICE);
+            @SuppressLint("MissingPermission")
             String vmNumber = tm.getVoiceMailNumber();
 
             if (!TextUtils.isEmpty(vmNumber)) {

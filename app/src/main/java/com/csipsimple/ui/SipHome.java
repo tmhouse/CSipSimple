@@ -21,6 +21,8 @@
 
 package com.csipsimple.ui;
 
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -33,6 +35,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar.Tab;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -40,20 +46,25 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.Tab;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.internal.nineoldandroids.animation.ObjectAnimator;
+//import com.actionbarsherlock.app.ActionBar;
+//import com.actionbarsherlock.app.ActionBar.Tab;
+//import com.actionbarsherlock.app.SherlockFragmentActivity;
+//import com.actionbarsherlock.internal.nineoldandroids.animation.ObjectAnimator;
+//import com.actionbarsherlock.internal.nineoldandroids.animation.ValueAnimator;
+//import com.actionbarsherlock.internal.utils.UtilityWrapper;
+//import com.actionbarsherlock.view.Menu;
+//import com.actionbarsherlock.view.MenuItem;
+//import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.internal.nineoldandroids.animation.ValueAnimator;
 import com.actionbarsherlock.internal.utils.UtilityWrapper;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.csipsimple.R;
 import com.csipsimple.api.SipConfigManager;
 import com.csipsimple.api.SipManager;
@@ -83,7 +94,11 @@ import com.csipsimple.wizards.WizardUtils.WizardInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SipHome extends SherlockFragmentActivity implements OnWarningChanged {
+import static android.animation.ValueAnimator.INFINITE;
+import static android.animation.ValueAnimator.REVERSE;
+
+//public class SipHome extends SherlockFragmentActivity implements OnWarningChanged {
+public class SipHome extends AppCompatActivity implements OnWarningChanged {
     public static final int ACCOUNTS_MENU = Menu.FIRST + 1;
     public static final int PARAMS_MENU = Menu.FIRST + 2;
     public static final int CLOSE_MENU = Menu.FIRST + 3;
@@ -111,7 +126,7 @@ public class SipHome extends SherlockFragmentActivity implements OnWarningChange
     private TabsAdapter mTabsAdapter;
     private boolean mDualPane;
     private Thread asyncSanityChecker;
-    private Tab warningTab;
+    private ActionBar.Tab warningTab;
     private ObjectAnimator warningTabfadeAnim;
 
     /**
@@ -133,7 +148,7 @@ public class SipHome extends SherlockFragmentActivity implements OnWarningChange
 
         setContentView(R.layout.sip_home);
 
-        final ActionBar ab = getSupportActionBar();
+        final androidx.appcompat.app.ActionBar ab = getSupportActionBar();
         ab.setDisplayShowHomeEnabled(false);
         ab.setDisplayShowTitleEnabled(false);
         ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -165,22 +180,25 @@ public class SipHome extends SherlockFragmentActivity implements OnWarningChange
         warningTab = ab.newTab().setIcon(android.R.drawable.ic_dialog_alert);
         warningTabfadeAnim = ObjectAnimator.ofInt(warningTab.getIcon(), "alpha", 255, 100);
         warningTabfadeAnim.setDuration(1500);
-        warningTabfadeAnim.setRepeatCount(ValueAnimator.INFINITE);
-        warningTabfadeAnim.setRepeatMode(ValueAnimator.REVERSE);
-        
+        warningTabfadeAnim.setRepeatCount(INFINITE);
+        warningTabfadeAnim.setRepeatMode(REVERSE);
+
         mDualPane = getResources().getBoolean(R.bool.use_dual_panes);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mTabsAdapter = new TabsAdapter(this, getSupportActionBar(), mViewPager);
         mTabsAdapter.addTab(dialerTab, DialerFragment.class, TAB_ID_DIALER);
-        mTabsAdapter.addTab(callLogTab, CallLogListFragment.class, TAB_ID_CALL_LOG);
-        if(favoritesTab != null) {
-            mTabsAdapter.addTab(favoritesTab, FavListFragment.class, TAB_ID_FAVORITES);
+
+Log.w("", "とりあえずtabはDialerのみにする");
+        if( false ){
+            mTabsAdapter.addTab(callLogTab, CallLogListFragment.class, TAB_ID_CALL_LOG);
+            if( favoritesTab != null ) {
+                mTabsAdapter.addTab(favoritesTab, FavListFragment.class, TAB_ID_FAVORITES);
+            }
+            if( messagingTab != null ) {
+                mTabsAdapter.addTab(messagingTab, ConversationsListFragment.class, TAB_ID_MESSAGES);
+            }
         }
-        if (messagingTab != null) {
-            mTabsAdapter.addTab(messagingTab, ConversationsListFragment.class, TAB_ID_MESSAGES);
-        }
-        
 
         hasTriedOnceActivateAcc = false;
 
