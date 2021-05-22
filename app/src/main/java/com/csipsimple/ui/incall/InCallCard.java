@@ -44,7 +44,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.actionbarsherlock.internal.view.menu.ActionMenuPresenter;
+//import com.actionbarsherlock.internal.view.menu.ActionMenuPresenter;
 import com.csipsimple.R;
 import com.csipsimple.api.SipCallSession;
 import com.csipsimple.api.SipCallSession.MediaState;
@@ -98,7 +98,7 @@ public class InCallCard extends FrameLayout implements OnClickListener, androidx
     private boolean cachedZrtpVerified;
     private boolean cachedZrtpActive;
 
-    private ActionMenuPresenter mActionMenuPresenter;
+    //private ActionMenuPresenter mActionMenuPresenter;
 
     private Map<String, DynActivityPlugin> incallPlugins;
 
@@ -136,8 +136,8 @@ public class InCallCard extends FrameLayout implements OnClickListener, androidx
         MenuInflater inflater = new MenuInflater(getContext());
         inflater.inflate(R.menu.in_call_card_menu, btnMenuBuilder);
         
-        mActionMenuPresenter = new ActionMenuPresenter(getContext());
-        mActionMenuPresenter.setReserveOverflow(true);
+        //mActionMenuPresenter = new ActionMenuPresenter(getContext());
+        //mActionMenuPresenter.setReserveOverflow(true);
 
         Log.e("", "ignore btnMenuBuilder.addMenuPresenter");
         //btnMenuBuilder.addMenuPresenter(mActionMenuPresenter);
@@ -147,6 +147,8 @@ public class InCallCard extends FrameLayout implements OnClickListener, androidx
     
     private boolean added = false;
     private void updateMenuView() {
+        Log.w("InCallCard", "updateMenuView is not impl.");
+        /****
         int w = getWidth();
         if(w <= 0) {
             w = getResources().getDisplayMetrics().widthPixels;
@@ -168,6 +170,7 @@ public class InCallCard extends FrameLayout implements OnClickListener, androidx
             mActionMenuPresenter.setWidthLimit(w, true);
             mActionMenuPresenter.updateMenuView(true);
         }
+         ****/
     }
 
     public synchronized void setCallState(SipCallSession aCallInfo) {

@@ -36,8 +36,10 @@ import android.provider.BaseColumns;
 import android.provider.ContactsContract.Contacts;
 
 import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.widget.ActionMenuView;
 import androidx.cursoradapter.widget.ResourceCursorAdapter;
 import android.text.TextUtils;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -166,23 +168,21 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
             MenuCallback newMcb = new MenuCallback(context, profileId, groupName, domain, publishedEnabled);
             MenuBuilder menuBuilder;
             if(menuViewWrapper.getTag() == null) {
-                throw new RuntimeException("no impl yet.");
-/****
-                final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
+                //final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                //        ViewGroup.LayoutParams.MATCH_PARENT);
 
-                MenuPresenter mActionMenuPresenter = new ActionMenuPresenter(mContext);
-                mActionMenuPresenter.setReserveOverflow(true);
+                //MenuPresenter mActionMenuPresenter = new ActionMenuPresenter(mContext);
+                //mActionMenuPresenter.setReserveOverflow(true);
                 menuBuilder = new MenuBuilder(context);
                 menuBuilder.setCallback(newMcb);
                 MenuInflater inflater = new MenuInflater(context);
                 inflater.inflate(R.menu.fav_menu, menuBuilder);
-                menuBuilder.addMenuPresenter(mActionMenuPresenter);
-                ActionMenuView menuView = (ActionMenuView) mActionMenuPresenter.getMenuView(menuViewWrapper);
-                SharlockUtil.getInstance().setBackgroundDrawable(menuView, null);
-                menuViewWrapper.addView(menuView, layoutParams);
+                //menuBuilder.addMenuPresenter(mActionMenuPresenter);
+                //ActionMenuView menuView = (ActionMenuView) mActionMenuPresenter.getMenuView(menuViewWrapper);
+
+                //SharlockUtil.getInstance().setBackgroundDrawable(menuView, null);
+                //menuViewWrapper.addView(menuView, layoutParams);
                 menuViewWrapper.setTag(menuBuilder);
- ****/
             }else {
                 menuBuilder = (MenuBuilder) menuViewWrapper.getTag();
                 menuBuilder.setCallback(newMcb);

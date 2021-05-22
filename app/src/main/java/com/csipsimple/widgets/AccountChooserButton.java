@@ -39,8 +39,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.actionbarsherlock.internal.view.View_HasStateListenerSupport;
-import com.actionbarsherlock.internal.view.View_OnAttachStateChangeListener;
 import com.csipsimple.R;
 import com.csipsimple.api.SipProfile;
 import com.csipsimple.utils.AccountListUtils;
@@ -58,7 +56,7 @@ import java.util.Set;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
 
-public class AccountChooserButton extends LinearLayout implements OnClickListener, View_HasStateListenerSupport {
+public class AccountChooserButton extends LinearLayout implements OnClickListener {
 
     protected static final String THIS_FILE = "AccountChooserButton";
 
@@ -137,7 +135,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
 
     private MenuPopupHelper mPopupMenu;
     private MenuBuilder mMenuBuilder;
-    private final Set<View_OnAttachStateChangeListener> mListeners = new HashSet<View_OnAttachStateChangeListener>();
+    //private final Set<View_OnAttachStateChangeListener> mListeners = new HashSet<View_OnAttachStateChangeListener>();
 
     /**
      * Observer for changes of account registration status
@@ -186,9 +184,6 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
             updateRegistration();
         }
 
-        for (View_OnAttachStateChangeListener listener : mListeners) {
-            listener.onViewAttachedToWindow(this);
-        }
     }
 
     @Override
@@ -197,10 +192,6 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
         if (statusObserver != null) {
             getContext().getContentResolver().unregisterContentObserver(statusObserver);
             statusObserver = null;
-        }
-
-        for (View_OnAttachStateChangeListener listener : mListeners) {
-            listener.onViewDetachedFromWindow(this);
         }
     }
 
@@ -287,6 +278,7 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
 
         @Override
         public void run() {
+            @SuppressLint("RestrictedApi")
             MenuItem item = mMenuBuilder.add(R.id.menu_accbtn_accounts, Menu.NONE, Menu.NONE,  ch.getLabel().toString());
             item.setIcon(ch.getIconDrawable());
             item.setOnMenuItemClickListener(new OnAccountMenuItemListener(ch.getFakeProfile()));
@@ -439,23 +431,6 @@ public class AccountChooserButton extends LinearLayout implements OnClickListene
     }
 
 
-    /* (non-Javadoc)
-     * @see com.actionbarsherlock.internal.view.View_HasStateListenerSupport#addOnAttachStateChangeListener(com.actionbarsherlock.internal.view.View_OnAttachStateChangeListener)
-     */
-    @Override
-    public void addOnAttachStateChangeListener(View_OnAttachStateChangeListener listener) {
-        mListeners.add(listener);
-    }
-
-    /* (non-Javadoc)
-     * @see com.actionbarsherlock.internal.view.View_HasStateListenerSupport#removeOnAttachStateChangeListener(com.actionbarsherlock.internal.view.View_OnAttachStateChangeListener)
-     */
-    @Override
-    public void removeOnAttachStateChangeListener(View_OnAttachStateChangeListener listener) {
-        mListeners.remove(listener);
-    }
-    
-    
     private class OnAccountMenuItemListener implements MenuItem.OnMenuItemClickListener {
         private SipProfile mAccount;
         OnAccountMenuItemListener(SipProfile account){
