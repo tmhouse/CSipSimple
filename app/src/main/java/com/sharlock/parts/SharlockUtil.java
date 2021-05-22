@@ -16,9 +16,6 @@ import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
-import com.actionbarsherlock.internal.ActionBarSherlockCompat;
-import com.actionbarsherlock.internal.widget.IcsLinearLayout;
-
 import org.xmlpull.v1.XmlPullParser;
 
 import java.lang.reflect.InvocationTargetException;
@@ -75,6 +72,7 @@ public class SharlockUtil {
      * @param activity Activity instance.
      * @return Logo resource ID.
      */
+    /****
     private static int loadLogoFromManifest(Activity activity) {
         int logo = 0;
         try {
@@ -145,6 +143,7 @@ public class SharlockUtil {
         if (DEBUG) Log.i(TAG, "Returning " + Integer.toHexString(logo));
         return logo;
     }
+     ****/
 
     public CharSequence stringToUpper(CharSequence text) {
         if(text != null) {
@@ -185,16 +184,10 @@ public class SharlockUtil {
 
     public void setLinearLayoutDividerPadding(LinearLayout l, int padding) {
         l.setDividerPadding(padding);
-        if(l instanceof IcsLinearLayout ) {
-            ((IcsLinearLayout)l).supportSetDividerPadding(padding);
-        }
     }
 
     public void setLinearLayoutDividerDrawable(LinearLayout l, Drawable drawable) {
         l.setDividerDrawable(drawable);
-        if(l instanceof IcsLinearLayout) {
-            ((IcsLinearLayout)l).supportSetDividerDrawable(drawable);
-        }
     }
 
     public static Method safelyGetSuperclassMethod(Class<?> cls, String methodName, Class<?>... parametersType) {
