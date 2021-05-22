@@ -134,8 +134,8 @@ public class MainPrefs extends ListActivity {
             PrefGroup pref_gp = adapter.getItem(position);
             ImageView icon_view = (ImageView)v.findViewById(R.id.icon);
             
-            TextView title_view = (TextView)v.findViewById(android.R.id.title);
-            TextView summary_view = (TextView)v.findViewById(android.R.id.summary);
+            TextView title_view = (TextView)v.findViewById(R.id.pref_item_title);
+            TextView summary_view = (TextView)v.findViewById(R.id.pref_item_summary);
             icon_view.setImageResource(pref_gp.icon);
             title_view.setText(pref_gp.title);
             summary_view.setText(pref_gp.summary);
