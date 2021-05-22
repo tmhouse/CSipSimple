@@ -22,12 +22,13 @@
 package com.csipsimple.ui.prefs;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
+//import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -54,7 +55,7 @@ public class Codecs extends AppCompatActivity {
 
         setContentView(R.layout.codecs_pager);
 
-        final ActionBar ab = getActionBar();
+        final ActionBar ab = getSupportActionBar();
         ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         
         ab.setDisplayShowHomeEnabled(true);
@@ -141,19 +142,20 @@ public class Codecs extends AppCompatActivity {
 
 
         @Override
-        public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+        public void onTabReselected(ActionBar.Tab tab, androidx.fragment.app.FragmentTransaction ft) {
             // Nothing to do
         }
 
         @Override
-        public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        public void onTabSelected(ActionBar.Tab tab, androidx.fragment.app.FragmentTransaction ft) {
+        //public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
             if (mViewPager.getCurrentItem() != tab.getPosition()) {
                 mViewPager.setCurrentItem(tab.getPosition(), true);
             }
         }
 
         @Override
-        public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+        public void onTabUnselected(ActionBar.Tab tab, androidx.fragment.app.FragmentTransaction ft) {
             // Nothing to do
         }
 
@@ -190,7 +192,6 @@ public class Codecs extends AppCompatActivity {
                     break;
             }
         }
-
     }
 	
 	
