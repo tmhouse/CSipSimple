@@ -178,15 +178,12 @@ public class SipHome extends AppCompatActivity implements OnWarningChanged {
         mTabsAdapter = new TabsAdapter(this, getSupportActionBar(), mViewPager);
         mTabsAdapter.addTab(dialerTab, DialerFragment.class, TAB_ID_DIALER);
 
-Log.w("", "とりあえずtabはDialerのみにする");
-        if( false ){
-            mTabsAdapter.addTab(callLogTab, CallLogListFragment.class, TAB_ID_CALL_LOG);
-            if( favoritesTab != null ) {
-                mTabsAdapter.addTab(favoritesTab, FavListFragment.class, TAB_ID_FAVORITES);
-            }
-            if( messagingTab != null ) {
-                mTabsAdapter.addTab(messagingTab, ConversationsListFragment.class, TAB_ID_MESSAGES);
-            }
+        mTabsAdapter.addTab(callLogTab, CallLogListFragment.class, TAB_ID_CALL_LOG);
+        if( favoritesTab != null ) {
+            mTabsAdapter.addTab(favoritesTab, FavListFragment.class, TAB_ID_FAVORITES);
+        }
+        if( messagingTab != null ) {
+            mTabsAdapter.addTab(messagingTab, ConversationsListFragment.class, TAB_ID_MESSAGES);
         }
 
         hasTriedOnceActivateAcc = false;
