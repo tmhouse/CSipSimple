@@ -21,6 +21,7 @@
 
 package com.csipsimple.ui.favorites;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentUris;
@@ -33,22 +34,17 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.provider.BaseColumns;
 import android.provider.ContactsContract.Contacts;
+
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.cursoradapter.widget.ResourceCursorAdapter;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.internal.utils.UtilityWrapper;
-import com.actionbarsherlock.internal.view.menu.ActionMenuPresenter;
-import com.actionbarsherlock.internal.view.menu.ActionMenuView;
-import com.actionbarsherlock.internal.view.menu.MenuBuilder;
-import com.actionbarsherlock.internal.view.menu.MenuBuilder.Callback;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.csipsimple.R;
 import com.csipsimple.api.SipManager;
 import com.csipsimple.api.SipProfile;
@@ -72,6 +68,7 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
 
     /** Listener for the primary action in the list, opens the call details. */
     private final View.OnClickListener mPrimaryActionListener = new View.OnClickListener() {
+        @SuppressLint("RestrictedApi")
         @Override
         public void onClick(View view) {
             ContactInfo ci = (ContactInfo) view.getTag();
@@ -81,6 +78,7 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
     };
     /** Listener for the secondary action in the list, either call or play. */
     private final View.OnClickListener mSecondaryActionListener = new View.OnClickListener() {
+        @SuppressLint("RestrictedApi")
         @Override
         public void onClick(View view) {
             ContactInfo ci = (ContactInfo) view.getTag();
@@ -126,6 +124,7 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
         super(context, R.layout.fav_list_item, c, 0);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void bindView(View view, final Context context, Cursor cursor) {
         ContentValues cv = new ContentValues();
@@ -166,11 +165,12 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
             MenuCallback newMcb = new MenuCallback(context, profileId, groupName, domain, publishedEnabled);
             MenuBuilder menuBuilder;
             if(menuViewWrapper.getTag() == null) {
-
+                throw new RuntimeException("no impl yet.");
+/****
                 final LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
                         LayoutParams.MATCH_PARENT);
 
-                ActionMenuPresenter mActionMenuPresenter = new ActionMenuPresenter(mContext);
+                MenuPresenter mActionMenuPresenter = new ActionMenuPresenter(mContext);
                 mActionMenuPresenter.setReserveOverflow(true);
                 menuBuilder = new MenuBuilder(context);
                 menuBuilder.setCallback(newMcb);
@@ -181,6 +181,7 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
                 UtilityWrapper.getInstance().setBackgroundDrawable(menuView, null);
                 menuViewWrapper.addView(menuView, layoutParams);
                 menuViewWrapper.setTag(menuBuilder);
+ ****/
             }else {
                 menuBuilder = (MenuBuilder) menuViewWrapper.getTag();
                 menuBuilder.setCallback(newMcb);
@@ -239,7 +240,8 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
         view.findViewById(R.id.configure_view).setVisibility((type == ContactsWrapper.TYPE_CONFIGURE) ? View.VISIBLE : View.GONE);
     }
     
-    private class MenuCallback implements Callback {
+    @SuppressLint("RestrictedApi")
+    private class MenuCallback implements MenuBuilder.Callback {
         private Long profileId = SipProfile.INVALID_ID;
         private Context context;
         private String groupName;
@@ -350,6 +352,7 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
         dialog.show();
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -359,6 +362,7 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
         }
     }
     
+    @SuppressLint("RestrictedApi")
     private void applyNumbersToCSip(String groupName, int flag, String domain, long profileId) {
         Log.d(THIS_FILE, "Apply numbers to csip " + groupName + " > " + domain);
         ContactsWrapper cw = ContactsWrapper.getInstance();
