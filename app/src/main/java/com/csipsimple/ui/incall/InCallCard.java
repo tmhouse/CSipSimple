@@ -44,14 +44,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-//import com.actionbarsherlock.internal.utils.UtilityWrapper;
-//import com.actionbarsherlock.internal.view.menu.ActionMenuPresenter;
-//import com.actionbarsherlock.internal.view.menu.ActionMenuView;
-//import com.actionbarsherlock.internal.view.menu.MenuBuilder;
-//import com.actionbarsherlock.internal.view.menu.MenuBuilder.Callback;
-//import com.actionbarsherlock.view.MenuInflater;
-//import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.actionbarsherlock.internal.view.menu.ActionMenuPresenter;
 import com.csipsimple.R;
 import com.csipsimple.api.SipCallSession;
@@ -69,6 +61,7 @@ import com.csipsimple.utils.ExtraPlugins;
 import com.csipsimple.utils.ExtraPlugins.DynActivityPlugin;
 import com.csipsimple.utils.Log;
 import com.csipsimple.utils.PreferencesProviderWrapper;
+import com.sharlock.parts.SharlockUtil;
 
 import org.webrtc.videoengine.ViERenderer;
 
@@ -168,7 +161,7 @@ public class InCallCard extends FrameLayout implements OnClickListener, androidx
             // Use width limit (this means we don't care item limits 
             mActionMenuPresenter.setItemLimit(20);
             ActionMenuView menuView = (ActionMenuView) mActionMenuPresenter.getMenuView(menuViewWrapper);
-            UtilityWrapper.getInstance().setBackgroundDrawable(menuView, null);
+            SharlockUtil.getInstance().setBackgroundDrawable(menuView, null);
             menuViewWrapper.addView(menuView, layoutParams);
             added = true;
         }else {

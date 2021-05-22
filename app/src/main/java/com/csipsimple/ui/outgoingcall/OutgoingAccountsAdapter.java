@@ -29,13 +29,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.csipsimple.R;
 import com.csipsimple.api.SipProfile;
 import com.csipsimple.ui.account.AccountsLoader;
 import com.csipsimple.utils.CallHandlerPlugin;
 import com.csipsimple.utils.Compatibility;
 import com.csipsimple.wizards.WizardUtils;
+import com.sharlock.parts.SharlockUtil;
 
 import java.lang.reflect.Method;
 
@@ -146,7 +146,7 @@ public class OutgoingAccountsAdapter extends ResourceCursorAdapter {
                 }
             }
             if(setAlphaMethod != null) {
-                UtilityWrapper.safelyInvokeMethod(setAlphaMethod, v, alpha);
+                SharlockUtil.safelyInvokeMethod(setAlphaMethod, v, alpha);
             }
         }else {
             // Try to set alpha on each component

@@ -38,7 +38,6 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 
-import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.csipsimple.R;
 import com.csipsimple.ui.incall.locker.IOnLeftRightChoice;
 import com.csipsimple.ui.incall.locker.IOnLeftRightChoice.IOnLeftRightProvider;
@@ -46,6 +45,7 @@ import com.csipsimple.ui.incall.locker.IOnLeftRightChoice.TypeOfLock;
 import com.csipsimple.ui.incall.locker.LeftRightChooserUtils;
 import com.csipsimple.ui.incall.locker.multiwaveview.GlowPadView.OnTriggerListener;
 import com.csipsimple.utils.Log;
+import com.sharlock.parts.SharlockUtil;
 
 import java.util.ArrayList;
 
@@ -158,10 +158,10 @@ public class SlidingTab extends ViewGroup implements IOnLeftRightProvider {
 				tab.setImageDrawable(iconD);
 			}
 			if(tabD != null) {
-			    UtilityWrapper.getInstance().setBackgroundDrawable(tab, tabD);
+			    SharlockUtil.getInstance().setBackgroundDrawable(tab, tabD);
 			}
 			if(barD != null) {
-			    UtilityWrapper.getInstance().setBackgroundDrawable(text, barD);
+			    SharlockUtil.getInstance().setBackgroundDrawable(text, barD);
 			}
 			if(tabD != null) {
 				target.setImageDrawable(targetD);

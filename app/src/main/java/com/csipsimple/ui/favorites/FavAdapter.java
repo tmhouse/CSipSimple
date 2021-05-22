@@ -57,6 +57,7 @@ import com.csipsimple.utils.contacts.ContactsWrapper.ContactInfo;
 import com.csipsimple.utils.contacts.ContactsWrapper.Phone;
 import com.csipsimple.widgets.contactbadge.QuickContactBadge;
 import com.csipsimple.wizards.WizardUtils;
+import com.sharlock.parts.SharlockUtil;
 
 import java.util.List;
 
@@ -167,8 +168,8 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
             if(menuViewWrapper.getTag() == null) {
                 throw new RuntimeException("no impl yet.");
 /****
-                final LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
-                        LayoutParams.MATCH_PARENT);
+                final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
 
                 MenuPresenter mActionMenuPresenter = new ActionMenuPresenter(mContext);
                 mActionMenuPresenter.setReserveOverflow(true);
@@ -178,7 +179,7 @@ public class FavAdapter extends ResourceCursorAdapter implements OnClickListener
                 inflater.inflate(R.menu.fav_menu, menuBuilder);
                 menuBuilder.addMenuPresenter(mActionMenuPresenter);
                 ActionMenuView menuView = (ActionMenuView) mActionMenuPresenter.getMenuView(menuViewWrapper);
-                UtilityWrapper.getInstance().setBackgroundDrawable(menuView, null);
+                SharlockUtil.getInstance().setBackgroundDrawable(menuView, null);
                 menuViewWrapper.addView(menuView, layoutParams);
                 menuViewWrapper.setTag(menuBuilder);
  ****/

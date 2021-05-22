@@ -41,10 +41,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.csipsimple.R;
 import com.csipsimple.api.SipConfigManager;
 import com.csipsimple.api.SipManager;
+import com.sharlock.parts.SharlockUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -142,7 +142,7 @@ public class Theme {
 	public void applyBackgroundDrawable(View button, String res) {
 		Drawable d = getDrawableResource(res);
 		if(d != null) {
-		    UtilityWrapper.getInstance().setBackgroundDrawable(button, d);
+		    SharlockUtil.getInstance().setBackgroundDrawable(button, d);
 		}
 	}
 	
@@ -178,7 +178,7 @@ public class Theme {
         }
         
         if(std != null) {
-            UtilityWrapper.getInstance().setBackgroundDrawable(v, std);
+            SharlockUtil.getInstance().setBackgroundDrawable(v, std);
         }
     }
     
@@ -201,7 +201,7 @@ public class Theme {
         }
         
         if(std != null) {
-            UtilityWrapper.getInstance().setBackgroundDrawable(v, std);
+            SharlockUtil.getInstance().setBackgroundDrawable(v, std);
         }
     }
     

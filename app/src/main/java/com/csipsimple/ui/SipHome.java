@@ -54,7 +54,6 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.csipsimple.R;
 import com.csipsimple.api.SipConfigManager;
 import com.csipsimple.api.SipManager;
@@ -80,6 +79,7 @@ import com.csipsimple.utils.UriUtils;
 import com.csipsimple.utils.backup.BackupWrapper;
 import com.csipsimple.wizards.BasePrefsWizard;
 import com.csipsimple.wizards.WizardUtils.WizardInfo;
+import com.sharlock.parts.SharlockUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -658,13 +658,13 @@ public class SipHome extends AppCompatActivity implements OnWarningChanged {
                                 if (tabLayout instanceof LinearLayout) {
                                     Drawable d = t.getDrawableResource("tab_divider");
                                     if (d != null) {
-                                        UtilityWrapper.getInstance()
+                                        SharlockUtil.getInstance()
                                                 .setLinearLayoutDividerDrawable(
                                                         (LinearLayout) tabLayout, d);
                                     }
                                     Integer dim = t.getDimension("tab_divider_padding");
                                     if (dim != null) {
-                                        UtilityWrapper.getInstance().setLinearLayoutDividerPadding(
+                                        SharlockUtil.getInstance().setLinearLayoutDividerPadding(
                                                 (LinearLayout) tabLayout, dim);
                                     }
                                 }

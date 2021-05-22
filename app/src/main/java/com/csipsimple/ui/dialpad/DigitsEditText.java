@@ -30,8 +30,8 @@ import android.view.MotionEvent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.inputmethod.InputMethodManager;
 
-import com.actionbarsherlock.internal.utils.UtilityWrapper;
 import com.csipsimple.R;
+import com.sharlock.parts.SharlockUtil;
 
 import java.lang.reflect.Method;
 
@@ -182,7 +182,7 @@ public class DigitsEditText extends AppCompatEditText {
     
     private void reflexSetShowSoftInputOnFocus(boolean show) {
         if(showSoftInputOnFocus != null) {
-            UtilityWrapper.safelyInvokeMethod(showSoftInputOnFocus, this, show);
+            SharlockUtil.getInstance().safelyInvokeMethod(showSoftInputOnFocus, this, show);
         }
     }
 }
