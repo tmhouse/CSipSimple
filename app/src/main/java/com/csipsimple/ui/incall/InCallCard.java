@@ -147,7 +147,7 @@ public class InCallCard extends FrameLayout implements OnClickListener, androidx
     
     private boolean added = false;
     private void updateMenuView() {
-        Log.w("InCallCard", "updateMenuView is not impl.");
+        Log.e("InCallCard", "updateMenuView is not impl.");
         /****
         int w = getWidth();
         if(w <= 0) {

@@ -22,6 +22,7 @@
 
 package com.csipsimple.ui.incall;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -136,6 +137,7 @@ public class InCallActivity extends AppCompatActivity implements IOnCallActionTr
     private static final String CALL_ID = "call_id";
     
 
+    @SuppressLint("InvalidWakeLockTag")
     @SuppressWarnings("deprecation")
     @Override
     public void onCreate(Bundle savedInstanceState) {
