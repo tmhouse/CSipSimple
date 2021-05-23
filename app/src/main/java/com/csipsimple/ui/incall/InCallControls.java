@@ -72,8 +72,7 @@ public class InCallControls extends FrameLayout implements MenuBuilder.Callback 
             supportMultipleCalls = SipConfigManager.getPreferenceBooleanValue(getContext(), SipConfigManager.SUPPORT_MULTIPLE_CALLS, false);
         }
 
-        Log.e("InCallControls", "not impl");
-        /****
+/**** ActionMenuPresenter is now hidden.
         final FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                 (int) getResources().getDimension(R.dimen.incall_bottom_bar_height));
 
@@ -102,7 +101,11 @@ public class InCallControls extends FrameLayout implements MenuBuilder.Callback 
         menuView.setBackgroundResource(R.drawable.abs__ab_bottom_transparent_dark_holo);
 
         this.addView(menuView, layoutParams);
-         ***/
+****/
+        btnMenuBuilder = new MenuBuilder(getContext());
+        btnMenuBuilder.setCallback(this);
+        MenuInflater inflater = new MenuInflater(getContext());
+        inflater.inflate(R.menu.in_call_controls_menu, btnMenuBuilder);
     }
     
 	@Override
