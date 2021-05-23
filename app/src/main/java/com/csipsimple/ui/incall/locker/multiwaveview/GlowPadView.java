@@ -40,6 +40,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -228,6 +229,7 @@ public class GlowPadView extends View implements IOnLeftRightProvider {
     public GlowPadView(Context context, AttributeSet attrs) {
         super(context, attrs);
         Resources res = context.getResources();
+        setBackgroundColor(Color.DKGRAY);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.GlowPadView);
         mInnerRadius = a.getDimension(R.styleable.GlowPadView_innerRadius, mInnerRadius);
