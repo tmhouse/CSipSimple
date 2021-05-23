@@ -239,10 +239,13 @@
         </service>
         <service android:name="com.csipsimple.service.Downloader" />
 
+        <!--
+            android:process=":sipStack"
+        -->
         <receiver
             android:name="com.csipsimple.service.DeviceStateReceiver"
             android:permission="android.permission.CONFIGURE_SIP"
-            android:process=":sipStack" >
+            >
 
             <!-- Here filter for protected-broadcasts -->
             <intent-filter>
@@ -348,10 +351,13 @@
             android:theme="@style/DarkTheme" />
 
         <!-- Call management -->
+        <!--
+            android:process=":sipStack"
+        -->
         <receiver
             android:name="com.csipsimple.service.OutgoingCall"
             android:permission="android.permission.CALL_PHONE"
-            android:process=":sipStack" >
+            >
 
             <!-- Here filter for protected-broadcasts -->
             <intent-filter android:priority="0" >
@@ -359,6 +365,9 @@
             </intent-filter>
         </receiver>
 
+        <!--
+            android:process=":sipStack"
+        -->
         <activity
             android:name="com.csipsimple.ui.outgoingcall.OutgoingCallChooser"
             android:allowTaskReparenting="false"
@@ -367,7 +376,6 @@
             android:label="@string/call"
             android:launchMode="singleTask"
             android:permission="android.permission.USE_SIP"
-            android:process=":sipStack"
             android:taskAffinity=""
             android:theme="@style/DarkTheme" >
             <intent-filter>
@@ -444,6 +452,9 @@
         </activity-alias>
 
         <!-- To be able to do video, this has to be launched in sipStack process -->
+        <!--
+        android:process=":sipStack"
+        -->
         <activity
             android:name="com.csipsimple.ui.incall.InCallActivity"
             android:allowTaskReparenting="true"
@@ -451,7 +462,6 @@
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:permission="android.permission.CONFIGURE_SIP"
-            android:process=":sipStack"
             android:taskAffinity=""
             android:theme="@style/DarkTheme.NoTitle" >
             <intent-filter android:priority="10" >
@@ -529,16 +539,22 @@
 
         <!-- Embedded plugins -->
         <!-- Call handlers android:process=":telCallHandler" -->
+        <!--
+            android:process=":sipStack"
+        -->
         <receiver
             android:name="com.csipsimple.plugins.telephony.CallHandler"
             android:permission="android.permission.PROCESS_OUTGOING_CALLS"
-            android:process=":sipStack" >
+            >
             <intent-filter>
                 <action android:name="com.csipsimple.phone.action.HANDLE_CALL" />
             </intent-filter>
         </receiver>
 
         <!-- Databases providers -->
+        <!--
+            android:process=":sipStack"
+        -->
         <provider
             android:name="com.csipsimple.service.PreferenceProvider"
             android:authorities="com.csipsimple.prefs"
@@ -547,7 +563,7 @@
             android:name="com.csipsimple.db.DBProvider"
             android:authorities="com.csipsimple.db"
             android:permission="android.permission.CONFIGURE_SIP"
-            android:process=":sipStack" />
+            />
 
         <!-- New UI -->
         <activity

@@ -320,6 +320,7 @@ public class InCallActivity extends AppCompatActivity implements IOnCallActionTr
         super.onDestroy();
     }
     
+    @SuppressLint("InvalidWakeLockTag")
     @SuppressWarnings("deprecation")
     private void attachVideoPreview() {
         // Video stuff
