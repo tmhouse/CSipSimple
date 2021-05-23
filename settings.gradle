@@ -1,1 +1,1 @@
-include ':app', ':sherlok'
+include ':app'
